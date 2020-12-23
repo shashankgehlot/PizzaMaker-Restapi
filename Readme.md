@@ -41,15 +41,15 @@ path('pizzatype/',Pizzatypeview.as_view()),
 | Urls        | Request options           | Uses  |
 | ------------- |:-------------:| -----:|
 |`pizzatype/ `   | `GET`,`POST` |  <a href="#check1"> Retrieve and Add Pizza Types To Database Table</a> |
-| `pizzasize/`      | `GET`,`POST`      |   Retrieve and Add Pizza sizes To Database Table  |
-| `pizzatopping`| `GET`,`POST`      |    Retrieve and Add Pizza Toppings To Database Table  |
-| `deletetopping/<str:size>`    | `DELETE` | Delete Toppings To Database Table |
-| `deletesize/<str:size>`      | `DELETE`      |   Delete pizza sizes To Database Table |
-| `deletetype/<str:type>` | `DELETE`    |    Delete pizza types To Database Table |
-| `makepizza` |  `GET`,`POST`     |   For Creating pizza of size and type with multiple topping store in `User_pizza` table|
-| `makepizza/<int:id>` |  `GET`,`PUT`,`DELETE`     |   GET,Update,Delete pizza details To based on id|
-| `filtertype/<str:type>` |`GET`     |   Filter all the pizza details from database To based on pizza type |
-| `filtertype/<str:size>` | `GET`      |   Filter all the pizza details from database To based on pizza size  |
+| `pizzasize/`      | `GET`,`POST`      | <a href="#check2">  Retrieve and Add Pizza sizes To Database Table</a>|
+| `pizzatopping`| `GET`,`POST`      |    <a href="#check3">Retrieve and Add Pizza Toppings To Database Table</a> |
+| `deletetopping/<str:size>`    | `DELETE` | <a href="#check3.1">Delete Toppings To Database Table</a> |
+| `deletesize/<str:size>`      | `DELETE`      |  <a href="#check2.1"> Delete pizza sizes To Database Table</a> |
+| `deletetype/<str:type>` | `DELETE`    |   <a href="#check1.1">  Delete pizza types To Database Table</a> |
+| `makepizza` |  `GET`,`POST`     |  <a href="#make">  For Creating pizza of size and type with multiple topping store in `User_pizza` table</a>|
+| `makepizza/<int:id>` |  `GET`,`PUT`,`DELETE`     |<a href="#getid">    GET,Update,Delete pizza details To based on id</a>|
+| `filtertype/<str:type>` |`GET`     |  <a href="#filter1"> Filter all the pizza details from database To based on pizza type </a>|
+| `filtertype/<str:size>` | `GET`      | <a href="#filter2">  Filter all the pizza details from database To based on pizza size </a> |
 
 ###EndPoint Details
 ### On Url: `localhost:8000/`
@@ -101,7 +101,7 @@ if pizza_type already present in Database
 ```
 
 
-### 1.1 Deletion of Pizzatype from table `pizza_type` 
+### 1.1 <p id="check1.1">  Deletion of Pizzatype from table `pizza_type` </p>
 Url:
 ```
 deletetype/<str:type>
@@ -128,7 +128,7 @@ if the type you are trying to delete does not exist
 }
 ```
 
-## 2 Adding and retrieving Pizzasizes in Database
+## 2 <p id="check2">  Adding and retrieving Pizzasizes in Database</p>
 Url:
 ```
 pizzasize/
@@ -174,7 +174,7 @@ Response will be:
     ]
 }
 ```
-### 2.1 Deletion of Pizza size object from table `pizza_size` 
+### 2.1 <p id="check2.1"> Deletion of Pizza size object from table `pizza_size`  </p>
 ```
 deletesize/<str:type>
 
@@ -207,7 +207,7 @@ if the size you are trying to delete does not exist
  
 
 
-## 3 Adding and retrieving Pizza type on/From Database
+## 3 <p id="check3">  Adding and retrieving Pizza type on/From Database</p>
 ```
 pizzatopping/
 ```
@@ -267,7 +267,7 @@ Response will be:
     ]
 }
 ```
-### 3.1 Deletion of Pizza toppings object from table `pizza_toppings` 
+### 3.1  <p id="check3.1"> Deletion of Pizza toppings object from table `pizza_toppings` </p>
 ```
 deletetopping/<str:type>
 
@@ -303,7 +303,7 @@ if the topping you are trying to delete does not exist
 
 
 
-## 4 Adding and retrieving User created pizza(pizzaorder) type on/From Database
+## 4 <p id="make"> Adding and retrieving User created pizza(pizzaorder) type on/From Database</p>
 Url:
 ```
 makepizza/
@@ -447,7 +447,7 @@ you will get Validation msgs like
 
 
 
-## 5 Adding and retrieving User created pizza(pizzaorder) type on/From Database by id and DELETE ,UPDATE,GET On The Basis of id
+## 5 <p id="getid">  Adding and retrieving User created pizza(pizzaorder) type on/From Database by id and DELETE ,UPDATE,GET On The Basis of id</p>
 Url:
 ```
 makepizza/<int:id>
@@ -522,7 +522,7 @@ you will not be able to `PUT`,`DELETE`,`GET` by deleted ids if you provide it re
 ```
 
 
-## 6 Fitering of data User_pizza on (Pizza made by User) on type and size
+## 6  <p id="filter1">Fitering of data User_pizza on (Pizza made by User) on type and size</p>
 Can take Request  `GET`  <br>
 
 Urls:
@@ -555,6 +555,7 @@ expected Response: all objects which have pizzatype square in it
     "status": 200
 }
 ```
+## <p id="filter2">Fitering of data User_pizza on (Pizza made by User) on size</p>
 
 Urls:
  ```
