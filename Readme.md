@@ -39,10 +39,10 @@ Api will Raise validation errors*
 ###EndPoint Details
 ### On Url: `localhost:8000/`
 
-## 1
-=======
+#1 Adding and retrieving Pizza type on/From Database
+======= 
 ### 1
-
+Url:
 ```
 pizzatype/
 ```
@@ -87,12 +87,13 @@ if pizza_type already present in Database
 
 
 ### 1.1 Deletion of Pizzatype from table `pizza_type` 
+Url:
 ```
 deletetype/<str:type>
 
 ```
 example:
-
+Url:
 ```
 deletetype/Regular
 ```
@@ -112,7 +113,8 @@ if the type you are trying to delete does not exist
 }
 ```
 
-## 2
+## 2 Adding and retrieving Pizzasizes in Database
+Url:
 ```
 pizzasize/
 ```
@@ -190,7 +192,7 @@ if the size you are trying to delete does not exist
  
 
 
-## 3
+## 3 Adding and retrieving Pizza type on/From Database
 ```
 pizzatopping/
 ```
@@ -286,7 +288,8 @@ if the topping you are trying to delete does not exist
 
 
 
-## 4
+## 4 Adding and retrieving User created pizza(pizzaorder) type on/From Database
+Url:
 ```
 makepizza/
 ```
@@ -429,12 +432,14 @@ you will get Validation msgs like
 
 
 
-## 5 Delete,Update,GET Existing data  User_pizza table which consist data created by user
+## 5 Adding and retrieving User created pizza(pizzaorder) type on/From Database by id and DELETE ,UPDATE,GET On The Basis of id
+Url:
 ```
 makepizza/<int:id>
 ```
 
 example:
+Url:
 ```
 makepizza/1
 ```
@@ -505,12 +510,12 @@ you will not be able to `PUT`,`DELETE`,`GET` by deleted ids if you provide it re
 ## 6 Fitering of data User_pizza on (Pizza made by User) on type and size
 Can take Request  `GET`  <br>
 
-urls
-6.1
+Urls:
  ```
 filtertype/<str:type>
 ```
 example:
+Urls:
 ```
 filtertype/Square
 ```
@@ -536,11 +541,12 @@ expected Response: all objects which have pizzatype square in it
 }
 ```
 
-
+Urls:
  ```
 filtersize/<str:type>
 ```
 example:
+Urls:
  ```
 filtersize/small
 ```
