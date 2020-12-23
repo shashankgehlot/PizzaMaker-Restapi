@@ -37,7 +37,7 @@ Api will Raise validation errors*
 </code>
 
 ###EndPoint Details
-url:
+### On Url
 ```
 pizzatype/
 ```
