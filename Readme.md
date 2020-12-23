@@ -40,7 +40,7 @@ path('pizzatype/',Pizzatypeview.as_view()),
 ### Api Endpoints Urls Details
 | Urls        | Request options           | Uses  |
 | ------------- |:-------------:| -----:|
-|`pizzatype/ `   | `GET`,`POST` |  Retrieve and Add Pizza Types To Database Table |
+|`pizzatype/ `   | `GET`,`POST` |  <a href="#check1"> Retrieve and Add Pizza Types To Database Table</a> |
 | `pizzasize/`      | `GET`,`POST`      |   Retrieve and Add Pizza sizes To Database Table  |
 | `pizzatopping`| `GET`,`POST`      |    Retrieve and Add Pizza Toppings To Database Table  |
 | `deletetopping/<str:size>`    | `DELETE` | Delete Toppings To Database Table |
@@ -54,7 +54,7 @@ path('pizzatype/',Pizzatypeview.as_view()),
 ###EndPoint Details
 ### On Url: `localhost:8000/`
 
-#1 Adding and retrieving Pizza type on/From Database
+# 1 <p id="check1" >Adding and retrieving Pizza type onFrom Database</p>
 ======= 
 ### 1
 Url:
