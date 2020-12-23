@@ -157,7 +157,7 @@ Response will be:
     ]
 }
 ```
-### 2.1 Deletion of Pizzatype from table `pizza_type` 
+### 2.1 Deletion of Pizzasize from table `pizza_size` 
 ```
 deletesize/<str:type>
 
@@ -165,7 +165,7 @@ deletesize/<str:type>
 example:
 
 ```
-deletetype/larger
+deletesize/larger
 ```
 
 Can take Request  `DELETE` <br>
@@ -250,7 +250,7 @@ Response will be:
     ]
 }
 ```
-### 3.1 Deletion of Pizzatype from table `pizza_toppings` 
+### 3.1 Deletion of Pizzatoppings from table `pizza_toppings` 
 ```
 deletetopping/<str:type>
 
