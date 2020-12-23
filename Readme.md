@@ -6,7 +6,8 @@
 *By Using this appication Admin can Add Pizzatypes to Database*<br>
 *By Using this appication Admin can Add Pizzasizes to Database*<br>
 *By Using this appication Admin can Add Pizzatoppings to Database*<br>
-*By Usinng this application Admin filter Order based on Pizzatype and Pizzasize*<br>
+*By Using this application Admin filter Order based on Pizzatype and Pizzasize*<br>
+*By Using this application User  can Make Order based on Pizzatype and Pizzasize & Toppings*<br>
 <br>
 *Based On Data about Pizzatypes,Pizzasizes,Pizzatoppings in Database 
 Input provided by EndUser is Validated if If input Field not Present in Database
@@ -21,20 +22,34 @@ Api will Raise validation errors*
 | pizza_toppings  |  `pizza_toppings` (varchar)             |
 | user_pizza      |   `pizza_type` (Forignkey), `pizza_size`(Forignkey), `Pizzajson`(json)|
   <br>
+  
+```
+path('pizzatype/',Pizzatypeview.as_view()),
+    path('pizzasize/',Pizzasizeview.as_view()),
+    path('pizzatopping/',Pizzatoppingview.as_view()),
+    path('makepizza/',makepizza.as_view()),
+    path('deletetopping/<str:topping>', PizzaToppingDeleteView.as_view()),
+    path('deletesize/<str:size>', PizzaSizeDeleteView.as_view()),
+    path('deletetype/<str:type>', PizzaTypeDeleteView.as_view()),
+    path('makepizza/<int:id>', getpizzabyid.as_view()),
+    path('filtertype/<str:type>', filterpizza.as_view({'get': 'get_selected_pizza_type'})),
+    path('filtersize/<str:size>', filterpizza.as_view({'get': 'get_selected_pizza_size'})),
 
-### Api Endpoints Details
-<code>
-    path('pizzatype/',Pizzatypeview.as_view())<br>
-    path('pizzasize/',Pizzasizeview.as_view())
-    path('pizzatopping/',Pizzatoppingview.as_view())
-    path('makepizza/',makepizza.as_view())
-    path('deletetopping/<str:topping>', PizzaToppingDeleteView.as_view())
-    path('deletesize/<str:size>', PizzaSizeDeleteView.as_view())
-    path('deletetype/<str:type>', PizzaTypeDeleteView.as_view())
-    path('makepizza/<int:id>', getpizzabyid.as_view())
-    path('filtertype/<str:type>', filterpizza.as_view({'get': 'get_selected_pizza_type'}))
-    path('filtersize/<str:size>', filterpizza.as_view({'get': 'get_selected_pizza_size'}))
-</code>
+```  
+
+### Api Endpoints Urls Details
+| Urls        | Request options           | Uses  |
+| ------------- |:-------------:| -----:|
+|`pizzatype/ `   | `GET`,`POST` |  Retrieve and Add Pizza Types To Database Table |
+| `pizzasize/`      | `GET`,`POST`      |   Retrieve and Add Pizza sizes To Database Table  |
+| `pizzatopping`| `GET`,`POST`      |    Retrieve and Add Pizza Toppings To Database Table  |
+| `deletetopping/<str:size>`    | `DELETE` | Delete Toppings To Database Table |
+| `deletesize/<str:size>`      | `DELETE`      |   Delete pizza sizes To Database Table |
+| `deletetype/<str:type>` | `DELETE`    |    Delete pizza types To Database Table |
+| `makepizza` |  `GET`,`POST`     |   For Creating pizza of size and type with multiple topping store in `User_pizza` table|
+| `makepizza/<int:id>` |  `GET`,`PUT`,`DELETE`     |   GET,Update,Delete pizza details To based on id|
+| `filtertype/<str:type>` |`GET`     |   Filter all the pizza details from database To based on pizza type |
+| `filtertype/<str:size>` | `GET`      |   Filter all the pizza details from database To based on pizza size  |
 
 ###EndPoint Details
 ### On Url: `localhost:8000/`

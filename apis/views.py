@@ -185,10 +185,10 @@ class getpizzabyid(generics.GenericAPIView):
              "status": status.HTTP_202_ACCEPTED
          })
 
-    def patch(self, request, *args, **kwargs):
+    def put(self, request, *args, **kwargs):
         try:
             self.instance = user_pizza.objects.get(id=kwargs['id'])
-            self.serializer = self.get_serializer(self.instance, data=request.data, partial=True)
+            self.serializer = self.get_serializer(self.instance, data=request.data)
             self.serializer.is_valid(raise_exception=True)
             self.serializer.save()
         except user_pizza.DoesNotExist:
@@ -213,17 +213,24 @@ class filterpizza(viewsets.ViewSet):
          try:
             self.data = user_pizza.objects.all().filter(pizzatypes=kwargs['type'])
             self.serializer = user_pizza_serializer(self.data, many=True)
+            if self.serializer.data==[]:
+                raise CustomValidation('Data For Given pizza type do not exist', 'data',
+                                       status_code=status.HTTP_404_NOT_FOUND)
+            return Response({
+                "data": self.serializer.data,
+                "status": status.HTTP_200_OK
+            })
          except user_pizza.DoesNotExist:
              raise CustomValidation('Data For Given pizza type do not exist', 'data', status_code=status.HTTP_404_NOT_FOUND)
-         return Response({
-             "data": self.serializer.data,
-             "status": status.HTTP_200_OK
-         })
+
 
      def get_selected_pizza_size(self,request,*args,**kwargs):
          try:
             self.data = user_pizza.objects.all().filter(pizzasizes=kwargs['size'])
             self.serializer = user_pizza_serializer(self.data, many=True)
+            if self.serializer.data==[]:
+                raise CustomValidation('Data For Given pizza type do not exist', 'data',
+                                       status_code=status.HTTP_404_NOT_FOUND)
          except user_pizza.DoesNotExist:
              raise CustomValidation('Data For Given pizza size do not exist', 'data', status_code=status.HTTP_404_NOT_FOUND)
          return Response({
