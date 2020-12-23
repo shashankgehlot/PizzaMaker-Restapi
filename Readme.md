@@ -39,7 +39,7 @@ Api will Raise validation errors*
 ###EndPoint Details
 ### On Url: `localhost:8000/`
 <<<<<<< HEAD
-##1
+## 1
 =======
 ### 1
 >>>>>>> 34b877388b7d20e1d381b53143daecc524d19b4e
@@ -86,7 +86,7 @@ if pizza_type already present in Database
 ```
 
 
-###1.1 Deletion of Pizzatype from table `pizza_type` 
+### 1.1 Deletion of Pizzatype from table `pizza_type` 
 ```
 deletetype/<str:type>
 
@@ -105,8 +105,14 @@ On Delete Request: `Regular` is taken as url parameter calls a function to delet
 }
 ```
 
+if the type you are trying to delete does not exist
+```
+{
+    "data": "Data For Given pizza type do not exist"
+}
+```
 
-##2
+## 2
 ```
 pizzasize/
 ```
@@ -151,7 +157,7 @@ Response will be:
     ]
 }
 ```
-###2.1 Deletion of Pizzatype from table `pizza_type` 
+### 2.1 Deletion of Pizzatype from table `pizza_type` 
 ```
 deletesize/<str:type>
 
@@ -171,6 +177,12 @@ On Delete Request: `larger` is taken as url parameter calls a function to delete
 ```
 
 
+if the size you are trying to delete does not exist
+```
+{
+    "data": "Data For Given pizza size do not exist"
+}
+```
 
 
 
@@ -178,3 +190,88 @@ On Delete Request: `larger` is taken as url parameter calls a function to delete
  
 
 
+## 3
+```
+pizzatopping/
+```
+Can take Request  `GET` ,`POST`<br>
+On GET Request: Expected Response if data Is Present in DataBase
+```
+{
+    "data": [
+        {
+            "pizza_toppings": "Broccoli"
+        },
+        {
+            "pizza_toppings": "Mushrooms"
+        },
+        {
+            "pizza_toppings": "Sausage"
+        },
+        {
+            "pizza_toppings": "Bacon"
+        },
+        {
+            "pizza_toppings": "Extra cheese"
+        },
+        {
+            "pizza_toppings": "Green peppers"
+        },
+        {
+            "pizza_toppings": "Pineapple"
+        },
+        {
+            "pizza_toppings": "Spinach"
+        },
+        {
+            "pizza_toppings": "Onion"
+        }
+    ],
+    "status": 200
+}
+```
+On Post Request: with key `pizza_size`
+![sg](./Media/Post_Pizzatoppings.png)<br>
+
+Expected Response:
+
+```
+{
+    "status": 201
+}
+```
+if pizza_toppings already present in Database<br>
+Response will be:
+
+```
+{
+    "pizza_toppings": [
+        "pizza_toppings with this pizza toppings  already exists."
+    ]
+}
+```
+### 3.1 Deletion of Pizzatype from table `pizza_type` 
+```
+deletetopping/<str:type>
+
+```
+example:
+
+```
+deletetopping/Pineapple
+```
+
+Can take Request  `DELETE` <br>
+On Delete Request: `Pineapple` is taken as url parameter calls a function to delete object(value from Database)  Expected Response if data Is Present in data Base
+```
+{
+    "status": 202
+}
+```
+
+if the topping you are trying to delete does not exist
+```
+{
+    "data": "Data For Given pizza toppings do not exist"
+}
+```
