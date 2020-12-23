@@ -38,7 +38,7 @@ Api will Raise validation errors*
 
 ###EndPoint Details
 ### On Url: `localhost:8000/`
-###1
+### 1
 ```
 pizzatype/
 ```
