@@ -351,7 +351,7 @@ Response code you will get:
 }
 ```
 
-
+### Error cases and validation messages
 if you provide invalid json field like blank json 
 You will get response as:
 ```
@@ -396,7 +396,7 @@ you will get Validation msgs like
     ]
 }
 ```
-2.if you put invalid input for  pizza_type (means input data which is not in pizza_toppings table):
+2.if you put invalid input for  pizza_type (means input data which is not in pizza_type table):
 ```
 {
     "pizzatypes": [
@@ -406,7 +406,7 @@ you will get Validation msgs like
 ```
 
 
-3.if you put invalid input for  pizza_size (means input data which is not in pizza_toppings table):
+3.if you put invalid input for  pizza_size (means input data which is not in pizza_size table):
 ```
 {
     "pizzasizes": [
@@ -427,3 +427,149 @@ you will get Validation msgs like
 }
 ```
 
+
+
+## 5 Delete,Update,GET Existing data  User_pizza table which consist data created by user
+```
+makepizza/<int:id>
+```
+
+example:
+```
+makepizza/1
+```
+Can take Request  `GET` ,`DELETE`,`PUT`  <br>
+
+On GET Request: Expected Response if data Is Present in DataBase:
+You need to provide id of  User_pizza object
+```
+makepizza/4
+```
+On successfull get call you will get response as:
+```
+{
+    "data": {
+        "id": 4,
+        "pizzatoppings": [
+            {
+                "pizzatoppings": "Onion"
+            },
+            {
+                "pizzatoppings": "Extra cheese"
+            }
+        ],
+        "pizzatypes": "Square",
+        "pizzasizes": "large"
+    },
+    "status": 200
+}
+```
+
+if id does not exist:
+```
+{
+    "data": "Data For Given id do not exist"
+}
+```
+
+Delete User_pizza by id :expected response
+
+```
+{
+    "status": 202
+}
+```
+
+![sg](./Media/deletebyid.png)<br>
+
+
+`Update` User_pizza by id:
+```
+{
+    "status": 202,
+    "Message": "Data Updated"
+}
+
+
+```
+![sg](./Media/putrequest.png)<br> 
+
+you will not be able to `PUT`,`DELETE`,`GET` by deleted ids if you provide it response will be 40x 
+```
+{
+    "data": "Data For Given id do not exist"
+}
+```
+
+
+## 6 Fitering of data User_pizza on (Pizza made by User) on type and size
+Can take Request  `GET`  <br>
+
+urls
+6.1
+ ```
+filtertype/<str:type>
+```
+example:
+```
+filtertype/Square
+```
+expected Response: all objects which have pizzatype square in it
+```
+{
+    "data": [
+        {
+            "id": 3,
+            "pizzatoppings": [
+                {
+                    "pizzatoppings": "Mushrooms"
+                },
+                {
+                    "pizzatoppings": "Sausage"
+                }
+            ],
+            "pizzatypes": "Square",
+            "pizzasizes": "small"
+        }
+    ],
+    "status": 200
+}
+```
+
+
+ ```
+filtersize/<str:type>
+```
+example:
+ ```
+filtersize/small
+```
+expected Response: all objects which have pizzasize small in it
+```
+{
+    "data": [
+        {
+            "id": 3,
+            "pizzatoppings": [
+                {
+                    "pizzatoppings": "Mushrooms"
+                },
+                {
+                    "pizzatoppings": "Sausage"
+                }
+            ],
+            "pizzatypes": "Square",
+            "pizzasizes": "small"
+        }
+    ],
+    "status": 200
+}
+```
+For both cases is data of filtersize/randomsize do not exist is user_pizza database it will raise Customvalidateion error
+```
+{
+    "data": "Data For Given pizza type do not exist"
+}
+```
+with 404 status code.
+![sg](./Media/custom.png)<br>
