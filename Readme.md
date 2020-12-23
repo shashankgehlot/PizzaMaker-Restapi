@@ -38,11 +38,11 @@ Api will Raise validation errors*
 
 ###EndPoint Details
 ### On Url: `localhost:8000/`
-<<<<<<< HEAD
+
 ## 1
 =======
 ### 1
->>>>>>> 34b877388b7d20e1d381b53143daecc524d19b4e
+
 ```
 pizzatype/
 ```
@@ -230,7 +230,7 @@ On GET Request: Expected Response if data Is Present in DataBase
     "status": 200
 }
 ```
-On Post Request: with key `pizza_size`
+On Post Request: with key `pizza_toppings`
 ![sg](./Media/Post_Pizzatoppings.png)<br>
 
 Expected Response:
@@ -250,7 +250,7 @@ Response will be:
     ]
 }
 ```
-### 3.1 Deletion of Pizzatype from table `pizza_type` 
+### 3.1 Deletion of Pizzatype from table `pizza_toppings` 
 ```
 deletetopping/<str:type>
 
