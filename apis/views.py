@@ -19,7 +19,7 @@ class Pizzatoppingview(generics.GenericAPIView):
         self.serializer=self.get_serializer(self.data,many=True)
         return Response({
             "data": self.serializer.data,
-            "status": status.HTTP_302_FOUND
+            "status": status.HTTP_200_OK
         })
 
     def post(self,request,*args,**kwargs):
@@ -47,7 +47,7 @@ class PizzaToppingDeleteView(generics.GenericAPIView):
         except pizza_toppings.DoesNotExist:
              raise CustomValidation('Data For Given pizza toppings do not exist', 'data', status_code=status.HTTP_404_NOT_FOUND)
         return Response({
-            "status": status.HTTP_200_OK
+            "status": status.HTTP_202_ACCEPTED
         })
 
 class PizzaSizeDeleteView(generics.GenericAPIView):
@@ -64,7 +64,7 @@ class PizzaSizeDeleteView(generics.GenericAPIView):
         except pizza_size.DoesNotExist:
              raise CustomValidation('Data For Given pizza size do not exist', 'data', status_code=status.HTTP_404_NOT_FOUND)
         return Response({
-            "status": status.HTTP_200_OK
+            "status": status.HTTP_202_ACCEPTED
         })
 
 class PizzaTypeDeleteView(generics.GenericAPIView):
@@ -80,7 +80,7 @@ class PizzaTypeDeleteView(generics.GenericAPIView):
         except pizza_type.DoesNotExist:
              raise CustomValidation('Data For Given pizza type do not exist', 'data', status_code=status.HTTP_404_NOT_FOUND)
         return Response({
-            "status": status.HTTP_200_OK
+            "status": status.HTTP_202_ACCEPTED
         })
 
 
@@ -95,7 +95,7 @@ class Pizzasizeview(generics.GenericAPIView):
         self.serializer=self.get_serializer(self.data,many=True)
         return Response({
             "data": self.serializer.data,
-            "status": status.HTTP_302_FOUND
+            "status": status.HTTP_200_OK
         })
 
     def post(self,request,*args,**kwargs):
@@ -118,7 +118,7 @@ class Pizzatypeview(generics.GenericAPIView):
         self.serializer=self.get_serializer(self.data,many=True)
         return Response({
             "data": self.serializer.data,
-            "status": status.HTTP_302_FOUND
+            "status": status.HTTP_200_OK
         })
 
     def post(self,request,*args,**kwargs):
@@ -143,7 +143,7 @@ class makepizza(generics.GenericAPIView):
         self.serializer = self.get_serializer(self.data, many=True)
         return Response({
             "data": self.serializer.data,
-            "status": status.HTTP_302_FOUND
+            "status": status.HTTP_200_OK
         })
 
     def post(self, request, *args, **kwargs):
@@ -172,7 +172,7 @@ class getpizzabyid(generics.GenericAPIView):
              raise CustomValidation('Data For Given id do not exist', 'data', status_code=status.HTTP_404_NOT_FOUND)
         return Response({
             "data": self.serializer.data,
-            "status": status.HTTP_302_FOUND
+            "status": status.HTTP_200_OK
         })
 
     def delete(self, request,*args,**kwargs):
@@ -182,7 +182,7 @@ class getpizzabyid(generics.GenericAPIView):
          except user_pizza.DoesNotExist:
              raise CustomValidation('Data For Given id is already deleted', 'data', status_code=status.HTTP_404_NOT_FOUND)
          return Response({
-             "status": status.HTTP_200_OK
+             "status": status.HTTP_202_ACCEPTED
          })
 
     def patch(self, request, *args, **kwargs):
@@ -217,7 +217,7 @@ class filterpizza(viewsets.ViewSet):
              raise CustomValidation('Data For Given pizza type do not exist', 'data', status_code=status.HTTP_404_NOT_FOUND)
          return Response({
              "data": self.serializer.data,
-             "status": status.HTTP_302_FOUND
+             "status": status.HTTP_200_OK
          })
 
      def get_selected_pizza_size(self,request,*args,**kwargs):
@@ -228,7 +228,7 @@ class filterpizza(viewsets.ViewSet):
              raise CustomValidation('Data For Given pizza size do not exist', 'data', status_code=status.HTTP_404_NOT_FOUND)
          return Response({
              "data": self.serializer.data,
-             "status": status.HTTP_302_FOUND
+             "status": status.HTTP_200_OK
          })
 
 
