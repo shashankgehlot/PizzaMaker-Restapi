@@ -1,0 +1,2 @@
+['Pepperoni','Mushrooms','Onions','Sausage','Bacon','Extra cheese','Extra cheese','Green peppers
+','Pineapple','Spinach']
