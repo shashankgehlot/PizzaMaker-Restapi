@@ -157,7 +157,7 @@ Response will be:
     ]
 }
 ```
-### 2.1 Deletion of Pizzasize from table `pizza_size` 
+### 2.1 Deletion of Pizza size object from table `pizza_size` 
 ```
 deletesize/<str:type>
 
@@ -250,7 +250,7 @@ Response will be:
     ]
 }
 ```
-### 3.1 Deletion of Pizzatoppings from table `pizza_toppings` 
+### 3.1 Deletion of Pizza toppings object from table `pizza_toppings` 
 ```
 deletetopping/<str:type>
 
@@ -275,3 +275,155 @@ if the topping you are trying to delete does not exist
     "data": "Data For Given pizza toppings do not exist"
 }
 ```
+
+
+
+
+
+
+
+
+
+
+
+## 4
+```
+makepizza/
+```
+Can take Request  `GET` ,`POST`<br>
+On GET Request: Expected Response if data Is Present in DataBase
+```
+{
+    "data": [
+        {
+            "id": 3,
+            "pizzatoppings": [
+                {
+                    "pizzatoppings": "Mushrooms"
+                },
+                {
+                    "pizzatoppings": "Sausage"
+                }
+            ],
+            "pizzatypes": "Square",
+            "pizzasizes": "small"
+        },
+        {
+            "id": 4,
+            "pizzatoppings": [
+                {
+                    "pizzatoppings": "Onion"
+                },
+                {
+                    "pizzatoppings": "Extra cheese"
+                }
+            ],
+            "pizzatypes": "Square",
+            "pizzasizes": "large"
+        }
+    ],
+    "status": 200
+}
+```
+On Post Request: with json values like
+```
+{
+"pizzatoppings": [
+    {
+        "pizzatoppings": "Mushrooms"
+    },
+    {
+        "pizzatoppings": "Sausage"
+    },{
+        "pizzatoppings": "Olives"
+    }
+],
+"pizzatypes": "Rectangle",
+"pizzasizes": "small"
+}
+```
+
+![sg](./Media/post_makepizza.png)<br>
+Response code you will get:
+```
+{
+    "status": 201
+}
+```
+
+
+if you provide invalid json field like blank json 
+You will get response as:
+```
+{
+    "pizzatoppings": [
+        "This field is required."
+    ],
+    "pizzatypes": [
+        "This Field is required"
+    ],
+    "pizzasizes": [
+        "This Field is required"
+    ]
+}
+with error code 400
+```
+
+if any of the field is missing you will get response as
+```
+{
+    "pizzatypes": [
+        "This Field is required"
+    ],
+    "pizzasizes": [
+        "This Field is required"
+    ]
+}
+```
+
+for example:
+for in post request field pizzatypes,pizzasizes were missing
+![sg](./Media/invalid_field1.png)<br>
+
+
+If you will put any invalid field in your `Json` post schema you will get 400 error messages<br>
+1. if you put invalid input for pizza toppings (means input data which is not in pizza_toppings table):
+you will get Validation msgs like
+```
+{
+    "non_field_errors": [
+        "choose from Toppings options.options are['Broccoli', 'Mushrooms', 'Sausage', 'Bacon', 'Extra cheese', 'Green peppers', 'Spinach', 'Onion', 'Aloo']"
+    ]
+}
+```
+2.if you put invalid input for  pizza_type (means input data which is not in pizza_toppings table):
+```
+{
+    "pizzatypes": [
+        "Invalid pk \"Pentagon\" - object does not exist."
+    ]
+}
+```
+
+
+3.if you put invalid input for  pizza_size (means input data which is not in pizza_toppings table):
+```
+{
+    "pizzasizes": [
+        "Invalid pk \"smallest\" - object does not exist."
+    ]
+}
+```
+
+4.if you put multiple invalid inputs you will get multiple Validatation messages  example
+```
+{
+    "pizzatypes": [
+        "Invalid pk \"Pentagon\" - object does not exist."
+    ],
+    "pizzasizes": [
+        "Invalid pk \"smallest\" - object does not exist."
+    ]
+}
+```
+
