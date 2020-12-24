@@ -20,7 +20,7 @@ Api will Raise validation errors*
 | pizza_type   | `pizza_type` (varchar) |
 | pizza_size      | `pizza_size` (varchar)      | 
 | pizza_toppings  |  `pizza_toppings` (varchar)             |
-| user_pizza      |   `pizza_type` (Forignkey), `pizza_size`(Forignkey), `Pizzajson`(json)|
+| user_pizza      |   `pizza_type` (Forignkey), `pizza_size`(Forignkey), `Pizza_toppings`(json)|
   <br>
   
 ```
